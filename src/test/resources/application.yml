@@ -1,0 +1,48 @@
+logging.level:
+  org.hibernate.SQL: DEBUG
+  org.hibernate.type.descriptor.sql: DEBUG
+
+
+spring:
+  mvc:
+    problemdetails:
+      enabled: true
+
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+    generate-ddl: true
+    show-sql: true
+  sql:
+    init:
+      data-locations: classpath:static/data/data.sql
+      mode: always
+
+
+server:
+  servlet:
+    encoding:
+      force-response: true
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  show-actuator: false
+
+#  http://localhost:8080/swagger-ui/index.html
